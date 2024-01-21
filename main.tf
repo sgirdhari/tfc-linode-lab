@@ -1,17 +1,15 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
+module "linode" {
+  source           = "github.com/egee-irl/terraform-linode-instance.git"
+  authorized_keys  = [var.ssh_public_key]
+  authorized_users = ["egee"]
+  type             = "g6-nanode-1"                                       # https://developers.linode.com/api/v4#operation/getLinodeTypes
+  region           = "us-central"
+  label            = "demo"
+  image            = "linode/ubuntu18.04"
+  root_pass        = "Terra4ormr0x!"
+  stackscript_id   = "394412"
+}
 
-resource "linode_instance" "instance" {
-  tags             = "${var.tags}"
-  label            = "${var.label}"
-  image            = "${var.image}"
-  region           = "${var.region}"
-  type             = "${var.type}"
-  root_pass        = "${var.root_pass}"
-  authorized_keys  = "${var.authorized_keys}"
-  authorized_users = "${var.authorized_users}"
-  private_ip       = "${var.private_ip}"
-  backups_enabled  = "${var.backups_enabled}"
-  stackscript_id   = "${var.stackscript_id}"
-  stackscript_data = "${var.stackscript_data}"
+output "instance_ip" {
+  value = "${module.linode.public_ip}"
 }
