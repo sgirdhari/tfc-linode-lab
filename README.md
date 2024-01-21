@@ -1,15 +1,32 @@
-# Terraform Cloud Getting Started Guide Example
+##terraform-linode-instance
+A simple Terraform module for creating StackScript-ready instances in Linode.
 
-This is an example Terraform configuration intended for use with the [Terraform Cloud Getting Started Guide](https://learn.hashicorp.com/terraform/cloud-gettingstarted/tfc_overview).
+##Usage
+Create a .tf file with a module like this:
 
-## What will this do?
+module "linode" {
+  source           = "github.com/egee-irl/terraform-linode-instance.git"
+  authorized_keys  = ["${chomp(file("./id_rsa.pub"))}"]
+  type             = "g6-nanode-1"
+  region           = "us-central"
+  image            = "linode/ubuntu18.04"
+  root_pass        = "Terra4ormr0x!"
+}
+You can view a demo using this module here.
 
-This is a Terraform configuration that will create an EC2 instance in your AWS account. 
+##Inputs
+All inputs are optional. View the variables.tf file for more detailed information about the outputs.
 
-When you set up a Workspace on Terraform Cloud, you can link to this repository. Terraform Cloud can then run `terraform plan` and `terraform apply` automatically when changes are pushed. For more information on how Terraform Cloud interacts with Version Control Systems, see [our VCS documentation](https://www.terraform.io/docs/cloud/run/ui.html).
-
-## What are the prerequisites?
-
-You must have an AWS account and provide your AWS Access Key ID and AWS Secret Access Key to Terraform Cloud. Terraform Cloud encrypts and stores variables using [Vault](https://www.vaultproject.io/). For more information on how to store variables in Terraform Cloud, see [our variable documentation](https://www.terraform.io/docs/cloud/workspaces/variables.html).
-
-The values for `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` should be saved as environment variables on your workspace.
+Name	Default
+root_pass	changeME007..
+private_ip	true
+backups_enabled	false
+region	us-central
+image	linode/ubuntu18.04
+label	Created by Terraform
+type	g6-standard-4
+stackscript_id	1
+tags	[]
+authorized_keys	[]
+authorized_users	[]
+stackscript_data	{}
