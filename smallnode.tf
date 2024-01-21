@@ -1,5 +1,5 @@
 module "linode" {
-  source           = "https://github.com/sgirdhari/tfc-linode-lab.git"
+  source           = "https://github.com/egeexyz/terraform-linode-instance.git"
   authorized_keys  = [var.ssh_public_key]
   type             = "g6-nanode-1"
   region           = "us-central"
