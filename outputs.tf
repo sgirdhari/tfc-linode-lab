@@ -1,11 +1,12 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-output "instance_ami" {
-  value = aws_instance.ubuntu.ami
+output "public_ip" {
+  description = "The public IP address for the Linode instance"
+  value       = "${linode_instance.instance.ip_address}"
 }
 
-output "instance_arn" {
-  value = aws_instance.ubuntu.arn
+output "root_password" {
+  description = "The password for the root user on the Linode instance"
+  value       = "${var.root_pass}"
 }
-
