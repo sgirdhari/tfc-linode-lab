@@ -1,5 +1,5 @@
 module "linode" {
-  source           = "github.com/egee-irl/terraform-linode-instance.git"
+  source           = "github.com/sgirdhari/tfc-linode-module.git"
   authorized_keys  = [var.ssh_public_key]
   authorized_users = ["egee"]
   type             = "g6-nanode-1"                                       # https://developers.linode.com/api/v4#operation/getLinodeTypes
