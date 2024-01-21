@@ -1,31 +1,17 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-provider "aws" {
-  region = var.region
-}
-
-data "aws_ami" "ubuntu" {
-  most_recent = true
-
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  owners = ["099720109477"] # Canonical
-}
-
-resource "aws_instance" "ubuntu" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = var.instance_type
-
-  tags = {
-    Name = var.instance_name
-  }
+resource "linode_instance" "instance" {
+  tags             = "${var.tags}"
+  label            = "${var.label}"
+  image            = "${var.image}"
+  region           = "${var.region}"
+  type             = "${var.type}"
+  root_pass        = "${var.root_pass}"
+  authorized_keys  = "${var.authorized_keys}"
+  authorized_users = "${var.authorized_users}"
+  private_ip       = "${var.private_ip}"
+  backups_enabled  = "${var.backups_enabled}"
+  stackscript_id   = "${var.stackscript_id}"
+  stackscript_data = "${var.stackscript_data}"
 }
