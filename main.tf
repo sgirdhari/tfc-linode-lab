@@ -1,11 +1,12 @@
 terraform {
+  required_version = ">= 1.0.0"
   required_providers {
     linode = {
       source  = "linode/linode"
-      version = "~> 2.13.0" # specify the desired version constraint
+      version = "2.8.0"
     }
   }
-}
+} 
 module "linode" {
   source           = "github.com/sgirdhari/tfc-linode-module.git"
   authorized_keys  = [var.ssh_public_key]
