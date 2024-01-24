@@ -2,7 +2,6 @@
 # SPDX-License-Identifier: MPL-2.0
 
 variable "root_pass" {
-  value     = var.root_pass
   description = "Root password for instances."
   type        = string
   sensitive   = true
