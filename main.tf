@@ -9,6 +9,8 @@ terraform {
 } 
 module "linode" {
   source           = "github.com/sgirdhari/tfc-linode-module.git"
+  linode_token = var.linode_token
+  ...
   authorized_keys  = [var.TF_VAR_ssh_public_key]
   authorized_users = ["terraformcloud"]
   type             = "g6-nanode-1"                                       # https://developers.linode.com/api/v4#operation/getLinodeTypes
