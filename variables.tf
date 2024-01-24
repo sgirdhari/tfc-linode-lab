@@ -1,10 +1,8 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-variable "linode_token" {
-  description = "Linode API Token"
-  type        = string
-  sensitive   = true
+provider "linode" {
+  token = var.linode_token
 }
 
 variable "region" {
