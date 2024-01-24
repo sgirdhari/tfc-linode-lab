@@ -37,7 +37,3 @@ variable "instance_name" {
   description = "Node instance name"
   default     = "Provisioned by Terraform"
 }
-
-output "public_ip" {
-  value = module.linode.ip_address
-}
