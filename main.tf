@@ -7,6 +7,9 @@ terraform {
     }
   }
 } 
+provider "linode" {
+  token = var.linode_token
+}
 module "linode" {
   source = "git::https://github.com/sgirdhari/tfc-linode-module.git"
    linode_token = var.linode_token
