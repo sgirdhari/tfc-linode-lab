@@ -1,7 +1,7 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-provider "linode" {
+provider "linode_token" {
   token = var.linode_token
 }
 
@@ -37,3 +37,6 @@ variable "instance_name" {
   default     = "Provisioned by Terraform"
 }
 
+output "public_ip" {
+  value = module.linode.ip_address
+}
