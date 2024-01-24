@@ -1,10 +1,6 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-provider "linode" {
-  token = var.linode_token
-}
-
 variable "root_pass" {
   value     = var.root_pass
   description = "Root password for instances."
