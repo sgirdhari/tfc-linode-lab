@@ -5,6 +5,12 @@ provider "linode" {
   token = var.linode_token
 }
 
+variable "linode_token" {
+  description = "The API token for Linode."
+  type        = string
+  sensitive   = true
+}
+
 variable "region" {
   description = "Akamai region"
   default     = "us-Central-1"
