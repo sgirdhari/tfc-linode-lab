@@ -5,6 +5,12 @@ provider "linode" {
   token = var.linode_token
 }
 
+variable "root_pass" {
+  description = "Root password for instances."
+  type        = string
+  sensitive   = true
+}
+
 variable "linode_token" {
   description = "The API token for Linode."
   type        = string
