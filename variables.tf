@@ -11,6 +11,11 @@ variable "root_pass" {
   sensitive   = true
 }
 
+variable "ssh_public_key" {
+  description = "The SSH public key."
+  type        = string
+}
+
 variable "linode_token" {
   description = "The API token for Linode."
   type        = string
