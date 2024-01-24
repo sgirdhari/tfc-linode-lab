@@ -6,6 +6,7 @@ provider "linode_token" {
 }
 
 variable "root_pass" {
+  value     = var.root_pass
   description = "Root password for instances."
   type        = string
   sensitive   = true
